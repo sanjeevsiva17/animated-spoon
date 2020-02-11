@@ -15,6 +15,9 @@ A simple springboot application that you can use to upload images and view them.
 Used JSON Web Tokens for authentication. 
 Reference : [https://www.javainuse.com/spring/boot-jwt](https://www.javainuse.com/spring/boot-jwt)
 
+## Docker
+Also Dockerised the spring application
+
 ## Database 
 
 Used Postgres as DB. The Database design is depicted below
