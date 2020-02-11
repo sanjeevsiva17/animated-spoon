@@ -7,6 +7,7 @@ import com.metamorphosis.login.services.FileUploadService;
 import com.metamorphosis.login.services.LandingPageService;
 import org.apache.tomcat.util.http.fileupload.FileUploadException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -33,7 +34,10 @@ public class LandingPageController {
 
     @PostMapping(value = "/upload/file")
     public ResponseEntity uploadTransactionReceipt(@RequestBody MultipartFile file) throws FileUploadException {
-        System.out.println(file);
+        System.out.println(file.getContentType());
+        if(file.getContentType()!="image/jpeg"){
+            return new ResponseEntity("File not image", HttpStatus.BAD_REQUEST);
+        }
         return new ResponseEntity(fileUploadService.uploadFile(file), HttpStatus.OK);
     }
 
